@@ -55,7 +55,15 @@
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
             }
 
-            function buildModel(data) {
+            function buildModel() {
+                const url = 'http://maturity-model.online/mm_data.json';
+                fetch(url)
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+                        let data = data;
+                    })
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 let colors = data.colors,
@@ -92,8 +100,7 @@
                     layers: layers,
                 }
             }
-            getData();
-            console.log(getData())
+            buildModel();
         </script>
     </head>
     <body>
