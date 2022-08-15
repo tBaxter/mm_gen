@@ -11,7 +11,7 @@
         </style>
 
         <script>
-            async function getData() {
+            /*async function getData() {
                 let url = 'http://maturity-model.online/mm_data.json';
                 try {
                     let res = await fetch(url);
@@ -19,6 +19,12 @@
                 } catch (error) {
                     console.log(error);
                 }
+            }*/
+            async function getData() {
+                let url = 'http://maturity-model.online/mm_data.json';
+                let response = await fetch(url);
+                let data = await response.json();
+                buildModel(data);
             }
             
             function getRandomSample(array, size) {
@@ -32,8 +38,7 @@
                 }
                 return shuffled.slice(0, size);
             }
-
-            
+         
             function lightenColor(hex) {
                 // Simple helper to convert hex color values to RGB 
                 // so we can mess with them, then return a new color
@@ -49,9 +54,7 @@
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
             }
 
-            function buildModel() {
-                let mm_data = await getData();
-                console.log('mm_data', mm_data);
+            function buildModel(data) {
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
@@ -60,7 +63,7 @@
                 //    .then(response => response.json())
                 //    .then(data => console.log('data', data));
                 
-                console.log('mm_data 2', mm_data);
+                console.log('mm_data 2', data);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
                     negativeHeds = mm_data.negativeHeds,
@@ -92,7 +95,7 @@
                     layers: layers,
                 }
             }
-            buildModel();
+            getData();
         </script>
     </head>
     <body>
