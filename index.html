@@ -17,7 +17,6 @@
                     headers: {'Access-Control-Allow-Origin':'*'}
                 });
                 const mm_data = await response.json();
-                console.log(mm_data);
                 return mm_data 
             }
 
@@ -57,6 +56,8 @@
                     positiveHeds = data.positiveHeds,
                     negativeHeds = data.negativeHeds,
                     deks = data.deks;
+                
+                console.log('positiveHeds', positiveHeds)
 
                 // Get some random samples
                 const topHalf = getRandomSample(positiveHeds, Math.ceil(layerCount/2));
