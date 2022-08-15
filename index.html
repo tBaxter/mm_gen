@@ -17,12 +17,9 @@
                     headers: {'Access-Control-Allow-Origin':'*'}
                 });
                 const mm_data = await response.json();
-                
-                return mm_data[0] 
+                return mm_data[0]
             }
-            loadData();
-            console.log('mm_data', mm_data);
-            console.log('data', data);
+            
             // helper to get a random sample from list
             function getRandomSample(array, size) {
                 var shuffled = array.slice(0), i = array.length, temp, index;
@@ -54,11 +51,12 @@
                 const layerCount = ~~(Math.random() * 5) + 2;
                 layers = []
                 
-                const data = loadData();
-                let colors = data.colors,
-                    positiveHeds = data.positiveHeds,
-                    negativeHeds = data.negativeHeds,
-                    deks = data.deks;
+                loadData();
+                console.log('mm_data', mm_data);
+                let colors = mm_data.colors,
+                    positiveHeds = mm_data.positiveHeds,
+                    negativeHeds = mm_data.negativeHeds,
+                    deks = mm_data.deks;
                 
                 console.log('positiveHeds', positiveHeds)
 
