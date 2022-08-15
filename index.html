@@ -11,14 +11,20 @@
         </style>
 
         <script>
-            async function loadData() {
-                const response = await fetch('http://maturity-model.online/mm_data.json', {
-                    mode: 'cors',
-                    headers: {'Access-Control-Allow-Origin':'*'}
-                });
-                const mm_data = await response.json();
-                return mm_data[0]
+            async function fetchData() {
+                let url = 'http://maturity-model.online/mm_data.json';
+                let response = await fetch(url);
+
+                console.log(response.status); // 200
+                console.log(response.statusText); // OK
+
+                if (response.status === 200) {
+                    let data = await response.json();
+                    // handle data
+                }
             }
+
+fetchText();
             
             // helper to get a random sample from list
             function getRandomSample(array, size) {
@@ -51,13 +57,9 @@
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
-                let url = 'http://maturity-model.online/mm_data.json';
-                let response = await fetch(url);
-                console.log(response.status); // 200
-                console.log(response.json()); // OK
-                let mm_data = response.json();
-
-                console.log('mm_data', mm_data);
+                fetchData();
+                
+                console.log('mm_data', data);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
                     negativeHeds = mm_data.negativeHeds,
