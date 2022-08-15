@@ -11,13 +11,12 @@
         </style>
 
         <script>
-            async function loadData() {
+            function loadData() {
                 const response = await fetch('http://maturity-model.online/mm_data.json', {
                     mode: 'cors',
                     headers: {'Access-Control-Allow-Origin':'*'}
                 });
-                const mm_data = await response.json();
-                return mm_data 
+                return response.json() 
             }
 
             // helper to get a random sample from list
@@ -52,6 +51,7 @@
                 layers = []
                 
                 const data = loadData();
+                console.log('data', data)
                 let colors = data.colors,
                     positiveHeds = data.positiveHeds,
                     negativeHeds = data.negativeHeds,
