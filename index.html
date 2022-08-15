@@ -57,19 +57,16 @@
             function buildModel(data) {
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
-                
-                //let url = 'http://maturity-model.online/mm_data.json';
-                //fetch(url)
-                //    .then(response => response.json())
-                //    .then(data => console.log('data', data));
-                
-                console.log('mm_data 2', data);
+                //console.log('data', data);
                 let colors = data.colors,
                     positiveHeds = data.positiveHeds,
                     negativeHeds = data.negativeHeds,
                     deks = data.deks;
                 
+                console.log('colors', colors)
                 console.log('positiveHeds', positiveHeds)
+                console.log('negativeHeds', negativeHeds)
+                console.log('deks', deks)
 
                 // Get some random samples
                 const topHalf = getRandomSample(positiveHeds, Math.ceil(layerCount/2));
@@ -80,7 +77,7 @@
                 var randomColors = getRandomSample(colors, layerCount);
                 randomColors.sort((a, b) => (a.order > b.order) ? 1 : -1)
 
-                // Now build our layers
+                console.log("building layers: ", layerCount)
                 for (var i = 0; i < layerCount; i++) {
                     let bgcolor = lightenColor(randomColors[i].hex);
                     layers.push({
