@@ -11,9 +11,14 @@
         </style>
 
         <script>
-            async function fetchData() {
-               
-                return response
+            async function getData() {
+                let url = 'http://maturity-model.online/mm_data.json';
+                try {
+                    let res = await fetch(url);
+                    return await res.json();
+                } catch (error) {
+                    console.log(error);
+                }
             }
 
             // helper to get a random sample from list
@@ -47,12 +52,12 @@
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
-                let url = 'http://maturity-model.online/mm_data.json';
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => console.log('data', data));
-
-                console.log('mm_data', response);
+                //let url = 'http://maturity-model.online/mm_data.json';
+                //fetch(url)
+                //    .then(response => response.json())
+                //    .then(data => console.log('data', data));
+                let mm_data = await getData();
+                console.log('mm_data', mm_data);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
                     negativeHeds = mm_data.negativeHeds,
