@@ -20,10 +20,10 @@
 
                 if (response.status === 200) {
                     let data = await response.json();
-                    // handle data
+                    return data
                 }
             }
-                        
+
             // helper to get a random sample from list
             function getRandomSample(array, size) {
                 var shuffled = array.slice(0), i = array.length, temp, index;
@@ -55,7 +55,8 @@
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
-                fetchData();
+                let data = fetchData()[0];
+                
                 
                 console.log('mm_data', data);
                 let colors = mm_data.colors,
