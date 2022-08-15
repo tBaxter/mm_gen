@@ -51,7 +51,8 @@
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
-                let mm_data = await fetch('http://maturity-model.online/mm_data.json');
+                let response = await fetch('http://maturity-model.online/mm_data.json');
+                let mm_data = await response.json();
                 
                 console.log('mm_data', mm_data);
                 let colors = mm_data.colors,
