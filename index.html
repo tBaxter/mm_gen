@@ -50,9 +50,9 @@
                 let url = 'http://maturity-model.online/mm_data.json';
                 fetch(url)
                     .then(response => response.json())
-                    .then(data => console.log(data));
+                    .then(data => console.log('data', data));
 
-                console.log('mm_data', data);
+                console.log('mm_data', response);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
                     negativeHeds = mm_data.negativeHeds,
