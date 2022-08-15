@@ -24,8 +24,9 @@
                 let url = 'http://maturity-model.online/mm_data.json';
                 let response = await fetch(url);
                 let data = await response.json();
-                let layers = buildModel(data);
-                return layers
+                return {
+                    layers: buildModel(data)
+                }
             }
             
             function getRandomSample(array, size) {
@@ -92,7 +93,7 @@
                     layers: layers,
                 }
             }
-            getData();
+            let layers = getData();
         </script>
     </head>
     <body>
