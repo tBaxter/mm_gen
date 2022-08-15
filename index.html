@@ -58,16 +58,15 @@
             function buildModel(data) {
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
-                //console.log('data', data);
                 let colors = data.colors,
                     positiveHeds = data.positiveHeds,
                     negativeHeds = data.negativeHeds,
                     deks = data.deks;
                 
-                console.log('colors', colors)
+                /*console.log('colors', colors)
                 console.log('positiveHeds', positiveHeds)
                 console.log('negativeHeds', negativeHeds)
-                console.log('deks', deks)
+                console.log('deks', deks)*/
 
                 // Get some random samples
                 const topHalf = getRandomSample(positiveHeds, Math.ceil(layerCount/2));
