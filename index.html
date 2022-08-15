@@ -48,7 +48,7 @@
                 const layers = []
                 
                 let url = 'http://maturity-model.online/mm_data.json';
-                let response = await fetch(url);
+                let response = fetch(url);
                 console.log(response.status); // 200
                 console.log(response.statusText); // OK
                 let mm_data = response.json();
