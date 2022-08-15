@@ -51,7 +51,7 @@
                 let response = fetch(url);
                 console.log(response.status); // 200
                 console.log(response.statusText); // OK
-                let mm_data = response.json();
+                let mm_data = response;
 
                 console.log('mm_data', mm_data);
                 let colors = mm_data.colors,
