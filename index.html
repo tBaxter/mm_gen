@@ -12,14 +12,15 @@
 
         <script>
             async function loadData() {
-                const response = await fetch('./mm_data', {
+                const response = await fetch('http://maturity-model.online/mm_data', {
                     mode: 'cors',
                     headers: {'Access-Control-Allow-Origin':'*'}
                 });
                 const mm_data = await response.json();
                 console.log(mm_data); 
             }
-            loadData()
+            loadData();
+
             function getRandomSample(array, size) {
                 var shuffled = array.slice(0), i = array.length, temp, index;
                 while (i--) {
