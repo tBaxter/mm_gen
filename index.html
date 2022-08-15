@@ -12,11 +12,7 @@
 
         <script>
             async function fetchData() {
-                let url = 'http://maturity-model.online/mm_data.json';
-                let response = await fetch(url);
-
-                console.log(response.status); // 200
-                console.log(response.statusText); // OK
+               
                 return response
             }
 
@@ -51,8 +47,11 @@
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
-                response = fetchData();
-                let data = response.json();
+                let url = 'http://maturity-model.online/mm_data.json';
+                let response = await fetch(url);
+                console.log(response.status); // 200
+                console.log(response.statusText); // OK
+                let mm_data = response.json();
 
                 console.log('mm_data', mm_data);
                 let colors = mm_data.colors,
