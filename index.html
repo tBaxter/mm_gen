@@ -51,9 +51,8 @@
                 fetch(url)
                     .then(response => response.json())
                     .then(data => console.log(data));
-                let mm_data = response;
 
-                console.log('mm_data', mm_data);
+                console.log('mm_data', data);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
                     negativeHeds = mm_data.negativeHeds,
