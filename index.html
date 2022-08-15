@@ -16,7 +16,9 @@
                     mode: 'cors',
                     headers: {'Access-Control-Allow-Origin':'*'}
                 });
-                return response.json() 
+                const mm_data = await response.json();
+                return mm_data
+
             }
 
             // helper to get a random sample from list
