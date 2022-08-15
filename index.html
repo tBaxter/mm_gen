@@ -62,14 +62,14 @@
                         return response.json();
                     })
                     .then((data) => {
-                        let data = data;
+                        let mm_data = data;
                     })
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
-                let colors = data.colors,
-                    positiveHeds = data.positiveHeds,
-                    negativeHeds = data.negativeHeds,
-                    deks = data.deks;
+                let colors = mm_data.colors,
+                    positiveHeds = mm_data.positiveHeds,
+                    negativeHeds = mm_data.negativeHeds,
+                    deks = mm_data.deks;
                 
                 /*console.log('colors', colors)
                 console.log('positiveHeds', positiveHeds)
