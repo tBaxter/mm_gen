@@ -17,7 +17,7 @@
                     headers: {'Access-Control-Allow-Origin':'*'}
                 });
                 const mm_data = await response.json();
-                return mm_data; 
+                return mm_data[0];
             }
             const data = loadData()
             console.log('data', data)
