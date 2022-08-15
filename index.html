@@ -20,9 +20,9 @@
                     console.log(error);
                 }
             }
-
-            // helper to get a random sample from list
+            
             function getRandomSample(array, size) {
+                // helper to get a random sample from list
                 var shuffled = array.slice(0), i = array.length, temp, index;
                 while (i--) {
                     index = Math.floor((i + 1) * Math.random());
@@ -33,10 +33,11 @@
                 return shuffled.slice(0, size);
             }
 
-            // Simple helper to convert hex color values to RGB 
-            // so we can mess with them, then return a new color
-            // Note: not currently used
+            
             function lightenColor(hex) {
+                // Simple helper to convert hex color values to RGB 
+                // so we can mess with them, then return a new color
+                // Note: not currently used
                 let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
                 let r = parseInt(result[1], 16),
                     g = parseInt(result[2], 16),
@@ -49,6 +50,8 @@
             }
 
             function buildModel() {
+                let mm_data = await getData();
+                console.log('mm_data', mm_data);
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
                 
@@ -56,8 +59,8 @@
                 //fetch(url)
                 //    .then(response => response.json())
                 //    .then(data => console.log('data', data));
-                let mm_data = await getData();
-                console.log('mm_data', mm_data);
+                
+                console.log('mm_data 2', mm_data);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
                     negativeHeds = mm_data.negativeHeds,
