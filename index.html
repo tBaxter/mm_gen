@@ -21,11 +21,12 @@
                 }
             }*/
             async function getData() {
-                let url = 'http://maturity-model.online/mm_data.json';
-                let response = await fetch(url);
-                let data = await response.json();
-                let layers = buildModel(data);
-                return layers
+                let data;
+                const url = 'http://maturity-model.online/mm_data.json';
+                const response = await fetch(url);
+                data = await response.json();
+                //let layers = buildModel(data);
+                return data
             }
             
             function getRandomSample(array, size) {
@@ -56,19 +57,20 @@
             }
 
             function buildModel() {
+                let mm_data;
                 const url = 'http://maturity-model.online/mm_data.json';
                 fetch(url)
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then((data) => {
-                        let colors = data.colors,
-                        positiveHeds = data.positiveHeds,
-                        negativeHeds = data.negativeHeds,
-                        deks = data.deks;
-                    })
+                    .then((response) => response.json())
+                    .then(data => mm_data = data)
+                    .then(() => mm_data)
+     
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
+
+                let colors = mm_data.colors,
+                        positiveHeds = mm_data.positiveHeds,
+                        negativeHeds = mm_data.negativeHeds,
+                        deks = mm_data.deks;
                 
                 /*console.log('colors', colors)
                 console.log('positiveHeds', positiveHeds)
