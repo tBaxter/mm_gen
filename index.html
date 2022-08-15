@@ -10,7 +10,16 @@
             }
         </style>
 
-        <script>            
+        <script>
+            async function loadData() {
+                const response = await fetch('http://maturity-model.online/mm_data.json', {
+                    mode: 'cors',
+                    headers: {'Access-Control-Allow-Origin':'*'}
+                });
+                const mm_data = await response.json();
+                return mm_data[0]
+            }
+            
             // helper to get a random sample from list
             function getRandomSample(array, size) {
                 var shuffled = array.slice(0), i = array.length, temp, index;
@@ -41,12 +50,9 @@
             function buildModel() {
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
-
-                const response = await fetch('http://maturity-model.online/mm_data.json', {
-                    mode: 'cors',
-                    headers: {'Access-Control-Allow-Origin':'*'}
-                });
-                const mm_data = await response.json()[0];
+                
+                let mm_data = await fetch('http://maturity-model.online/mm_data.json');
+                
                 console.log('mm_data', mm_data);
                 let colors = mm_data.colors,
                     positiveHeds = mm_data.positiveHeds,
