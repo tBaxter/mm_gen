@@ -11,7 +11,7 @@
         </style>
 
         <script>
-            function loadData() {
+            async function loadData() {
                 const response = await fetch('http://maturity-model.online/mm_data.json');
                 const mm_data = await response.json();
                 return mm_data
