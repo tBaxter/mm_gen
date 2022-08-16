@@ -69,7 +69,7 @@
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
             }
 
-            function buildModel() {
+            async function buildModel() {
                 /*let mm_data;
                 const url = 'https://maturity-model.online/mm_data.json';
                 fetch(url)
