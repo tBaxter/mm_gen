@@ -108,6 +108,19 @@
             mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
         }
     }" x-init="retrieveData()">
+    <div
+        x-data="{
+            mm_data: null,
+            isLoading: false,
+            fetchData() {
+                this.isLoading = true;
+                fetch('https://maturity-model.online/mm_data.json')
+                    .then((response) => response.json())
+                    .then((json) => this.mm_data = json);
+            }
+        }" x-init="fetchData()">
+        <p x-text="mm_data[0]"></p>    
+    </div>
         <h2 x-text="mm_data.colors"></h2>
         <template x-if="mm_data" x-init="buildModel(mm_data)">
         <h1>Your new (generated) maturity model</h1>
