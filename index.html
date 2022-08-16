@@ -32,6 +32,23 @@
                     console.error(error);
                 }
             }
+            function getData() {
+                return {
+                    // other default properties
+                    isLoading: false,
+                    mm_data: null,
+                    url: 'https://maturity-model.online/mm_data.json',
+                    fetchMMData(url) {
+                        this.isLoading = true;
+                        fetch(url)
+                        .then(res => res.json())
+                        .then(data => {
+                            this.isLoading = false;
+                            this.mm_data = data;
+                        });
+                    }
+                }
+            }
             /*(async function getData() {
                 let data;
                 const url = 'https://maturity-model.online/mm_data.json';
@@ -120,9 +137,9 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     </head>
-    <body x-data="fetchData()" x-init="buildModel()">
+    <body x-data="getData()">
         <h1>Your new (generated) maturity model</h1>
-        <div class="layers" x-data="{ layers }">
+        <div class="layers" x-if="mm_data" x-init="buildModel()" x-data="{ layers }">
             <template x-for="layer in layers">
                 <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
 
