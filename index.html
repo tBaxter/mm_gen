@@ -10,20 +10,6 @@
         </style>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
-            async function fetchData() {
-                const url = 'https://maturity-model.online/mm_data.json';
-                try {
-                    const response = await fetch(url, {
-                        method: 'GET',
-                        credentials: 'same-origin'
-                    });
-                    const data = await response.json();
-                    return data;
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-        
             function getRandomSample(array, size) {
                 // helper to get a random sample from list
                 var shuffled = array.slice(0), i = array.length, temp, index;
@@ -63,7 +49,6 @@
                         color: randomColors[i]
                     })
                 }
-                console.log("layers ", layers)
                 return layers
             }
         </script>
