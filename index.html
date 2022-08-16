@@ -10,20 +10,6 @@
         </style>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
-            async function fetchData() {
-                const url = 'https://maturity-model.online/mm_data.json';
-                try {
-                    const response = await fetch(url, {
-                        method: 'GET',
-                        credentials: 'same-origin'
-                    });
-                    const data = await response.json();
-                    return data;
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-        
             function getRandomSample(array, size) {
                 // helper to get a random sample from list
                 var shuffled = array.slice(0), i = array.length, temp, index;
@@ -63,14 +49,12 @@
                         color: randomColors[i]
                     })
                 }
-                console.log("layers ", layers)
                 return layers
             }
         </script>
-
     </head>
     <body>
-        <div
+        <div class="layers" 
             x-data="{layers: []}"
             x-init="fetch('https://maturity-model.online/mm_data.json')
                 .then(response => response.json())
@@ -78,16 +62,14 @@
         >
             <h1>Your new (generated) maturity model</h1>
 
-            <template  x-if="layers">
-                <div class="layers" >
-                    <template x-for="layer in layers">
-                        <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
-                            <h2 x-text="layer.hed"></h2>
-                            <p x-text="layer.dek"></p>
-                        </div>
-                    </template>
-                </div>
-        </template>
-    </div>    
+            <template x-if="layers">
+                <template x-for="layer in layers">
+                    <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
+                        <h2 x-text="layer.hed"></h2>
+                        <p x-text="layer.dek"></p>
+                    </div>
+                </template>
+            </template>
+        </div>    
     </body>
 </html>
