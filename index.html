@@ -108,6 +108,7 @@
             this.mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
         }
     }" x-init="retrieveData()">
+        <h2 x-text="mm_data"></h2>
         <template x-if="mm_data" x-init="buildModel(mm_data)">
         <h1>Your new (generated) maturity model</h1>
         <div class="layers"  x-data="{ layers }">
