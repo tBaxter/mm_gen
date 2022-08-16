@@ -8,6 +8,7 @@
                 margin-bottom: 1em;
             }
         </style>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <script>
             /*async function getData() {
@@ -134,10 +135,11 @@
                 }
             }
         </script>
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     </head>
-    <body x-data="getData()">
+    <body x-init="http://maturity-model.online/mm_data.json')
+        .then(response => response.json())
+        .then(data => mm_data = data)">
         <template x-if="mm_data">
         <h1>Your new (generated) maturity model</h1>
         <div class="layers" x-if="mm_data" x-init="buildModel()" x-data="{ layers }">
