@@ -70,14 +70,15 @@
 
     </head>
     <body>
-    <div
-        x-data="{layers: []}"
-        x-init="fetch('https://maturity-model.online/mm_data.json')
-            .then(response => response.json())
-            .then(response => { layers = buildModel(response); })"
-    >
-        <template>
-                <h1>Your new (generated) maturity model</h1>
+        <div
+            x-data="{layers: []}"
+            x-init="fetch('https://maturity-model.online/mm_data.json')
+                .then(response => response.json())
+                .then(response => { layers = buildModel(response); })"
+        >
+            <h1>Your new (generated) maturity model</h1>
+
+            <template>
                 <div class="layers"  x-if="layers">
                     <template x-for="layer in layers">
                         <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
