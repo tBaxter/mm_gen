@@ -120,7 +120,7 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     </head>
-    <body x-init="buildModel()">
+    <body x-data="fetchData()" x-init="buildModel()">
         <h1>Your new (generated) maturity model</h1>
         <div class="layers" x-data="{ layers }">
             <template x-for="layer in layers">
