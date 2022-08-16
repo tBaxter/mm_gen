@@ -1,6 +1,5 @@
 <html>
     <head>
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <style>
             body {font-family: sans-serif; padding: 1em 5em}
             .layers div {
@@ -114,12 +113,15 @@
                         bgcolor: bgcolor
                     })
                 }
+                console.log(layers)
                 return {
                     layers: layers,
                 }
             }
             buildModel();
         </script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     </head>
     <body>
         <h1>Your new (generated) maturity model</h1>
