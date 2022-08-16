@@ -87,9 +87,9 @@
             .then(response => response.json())
             .then(response => { raw_data = response; isLoading = false; layers = buildModel(response); console.log(layers); })"
     >
-        <template x-if="layers" x-show="!isLoading">
+        <template x-if="layers">
                 <h1>Your new (generated) maturity model</h1>
-                <div class="layers">
+                <div class="layers" x-show="!isLoading">
                     <template x-for="layer in layers">
                         <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
                             <h2 x-text="layer.hed"></h2>
