@@ -84,7 +84,7 @@
                 let rgbVal = "rgb(" + newr + "," + newg + "," + newb + ")";
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
             }*/
-            async function buildModel() {
+            async function buildModel(mm_data) {
                 /*let mm_data;
                 const url = 'https://maturity-model.online/mm_data.json';
                 fetch(url)
@@ -93,7 +93,7 @@
                     .then(() => mm_data)
                 console.log('mm_data', mm_data)
                 console.log('data', data)*/
-                const mm_data = await fetchData();
+                //onst mm_data = await fetchData();
                 console.log('mm_data', mm_data)
 
                 const layerCount = ~~(Math.random() * 5) + 2;
@@ -143,9 +143,9 @@
             this.mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
         }
     }" x-init="retrieveData()">
-        <template x-if="mm_data">
+        <template x-if="mm_data" x-init="buildModel(mm_data)">
         <h1>Your new (generated) maturity model</h1>
-        <div class="layers" x-if="mm_data" x-init="buildModel()" x-data="{ layers }">
+        <div class="layers"  x-data="{ layers }">
             <template x-for="layer in layers">
                 <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
 
