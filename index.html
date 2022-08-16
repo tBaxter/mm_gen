@@ -119,7 +119,11 @@
                     .then((json) => this.mm_data = json);
             }
         }" x-init="fetchData()">
-        <p x-text="mm_data[0]"></p>    
+        <p>waiting....</p>
+        <div x-if="mm_data">
+            <p x-text="mm_data[0]"></p>  
+        </div>
+          
     </div>
         <h2 x-text="mm_data.colors"></h2>
         <template x-if="mm_data" x-init="buildModel(mm_data)">
