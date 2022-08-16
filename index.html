@@ -92,6 +92,8 @@
         <template x-if="layers">
         <div x-show="!isLoading">
             <h1>Your new (generated) maturity model</h1>
+            <p x-text="layers"></p>
+            <p x-text="raw_data"></p>
             <div class="layers" x-data="{ layers }">
                 <template x-for="layer in layers">
                     <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
