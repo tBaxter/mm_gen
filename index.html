@@ -78,8 +78,8 @@
         >
             <h1>Your new (generated) maturity model</h1>
 
-            <template>
-                <div class="layers"  x-if="layers">
+            <template  x-if="layers">
+                <div class="layers" >
                     <template x-for="layer in layers">
                         <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
                             <h2 x-text="layer.hed"></h2>
