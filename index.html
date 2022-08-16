@@ -58,7 +58,7 @@
 
             function buildModel() {
                 let mm_data;
-                const url = 'http://maturity-model.online/mm_data.json';
+                const url = 'https://maturity-model.online/mm_data.json';
                 fetch(url)
                     .then((response) => response.json())
                     .then(data => mm_data = data)
