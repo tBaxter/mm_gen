@@ -108,10 +108,11 @@
             this.mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
         }
     }" x-init="retrieveData()">
-        <h2 x-text="mm_data"></h2>
+        <h2 x-text="mm_data.colors"></h2>
         <template x-if="mm_data" x-init="buildModel(mm_data)">
         <h1>Your new (generated) maturity model</h1>
-        <div class="layers"  x-data="{ layers }">
+        <h2 x-text="layers"></h2>
+        <div class="layers" x-data="{ layers }">
             <template x-for="layer in layers">
                 <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
 
