@@ -138,6 +138,7 @@
 
     </head>
     <body x-data="getData()">
+        <template x-if="mm_data">
         <h1>Your new (generated) maturity model</h1>
         <div class="layers" x-if="mm_data" x-init="buildModel()" x-data="{ layers }">
             <template x-for="layer in layers">
@@ -150,5 +151,6 @@
                 </div>
             </template>
         </div>
+    </template>
     </body>
 </html>
