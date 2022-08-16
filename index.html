@@ -71,10 +71,10 @@
     </head>
     <body>
     <div
-        x-data="{raw_data: [], layers: []}"
+        x-data="{layers: []}"
         x-init="fetch('https://maturity-model.online/mm_data.json')
             .then(response => response.json())
-            .then(response => { raw_data = response; layers = buildModel(response); console.log(layers); })"
+            .then(response => { layers = buildModel(response); })"
     >
         <template>
                 <h1>Your new (generated) maturity model</h1>
