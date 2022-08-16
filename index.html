@@ -33,14 +33,14 @@
                     console.error(error);
                 }
             }
-            async function getData() {
+            /*(async function getData() {
                 let data;
                 const url = 'https://maturity-model.online/mm_data.json';
                 const response = await fetch(url);
                 data = await response.json();
                 //let layers = buildModel(data);
                 return data
-            }
+            }*/
             
             function getRandomSample(array, size) {
                 // helper to get a random sample from list
@@ -53,7 +53,7 @@
                 }
                 return shuffled.slice(0, size);
             }
-         
+            /*
             function lightenColor(hex) {
                 // Simple helper to convert hex color values to RGB 
                 // so we can mess with them, then return a new color
@@ -68,7 +68,7 @@
                 let rgbVal = "rgb(" + newr + "," + newg + "," + newb + ")";
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
             }
-
+            */
             async function buildModel() {
                 /*let mm_data;
                 const url = 'https://maturity-model.online/mm_data.json';
@@ -79,7 +79,7 @@
                 console.log('mm_data', mm_data)
                 console.log('data', data)*/
                 const mm_data = await fetchData();
-                console.log('data', mm_data)
+                console.log('mm_data', mm_data)
 
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
@@ -89,10 +89,10 @@
                         negativeHeds = mm_data.negativeHeds,
                         deks = mm_data.deks;
                 
-                /*console.log('colors', colors)
+                console.log('colors', colors)
                 console.log('positiveHeds', positiveHeds)
                 console.log('negativeHeds', negativeHeds)
-                console.log('deks', deks)*/
+                console.log('deks', deks)
 
                 // Get some random samples
                 const topHalf = getRandomSample(positiveHeds, Math.ceil(layerCount/2));
