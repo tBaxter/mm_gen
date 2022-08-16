@@ -125,21 +125,6 @@
         </div>
           
     </div>
-        <h2 x-text="mm_data.colors"></h2>
-        <template x-if="mm_data" x-init="buildModel(mm_data)">
-        <h1>Your new (generated) maturity model</h1>
-        <h2 x-text="layers"></h2>
-        <div class="layers" x-data="{ layers }">
-            <template x-for="layer in layers">
-                <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
-
-                    <h2 x-text="layer.hed"></h2>
-
-                    <p x-text="layer.dek"></p>
-
-                </div>
-            </template>
-        </div>
-    </template>
+    
     </body>
 </html>
