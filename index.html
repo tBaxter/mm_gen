@@ -109,6 +109,30 @@
         }
     }" x-init="retrieveData()">
     <div
+        x-cloak
+        x-data="{raw_data: [], 'isLoading': true}"
+        x-init="fetch('https://maturity-model.online/mm_data.json')
+            .then(response => response.json())
+            .then(response => { raw_data = response; isLoading = false; console.log(response.colors); })"
+    >
+    <table x-show="!isLoading">
+        <tr>
+            <th>Team</th>
+            <th>Founded</th>
+            <th>Stadium</th>
+            <th>Capacity</th>
+        </tr>
+        <template x-for="team in raw_data">
+            <tr>
+            <td x-text="team.color"></td>
+            <td x-text="team.intFormedYear"></td>
+            <td x-text="team.strStadium"></td>
+            <td x-text="team.intStadiumCapacity"></td>
+            </tr>
+        </template>
+    </table>
+</div>
+    <div
         x-data="{
             mm_data: null,
             isLoading: false,
