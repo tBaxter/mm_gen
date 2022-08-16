@@ -137,9 +137,12 @@
         </script>
 
     </head>
-    <body x-init="fetch('https://maturity-model.online/mm_data.json')
-        .then(response => response.json())
-        .then(data => mm_data = data)">
+    <body x-data="{
+        mm_data: null,
+        async retrieveData() {
+            this.mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
+        }
+    }" x-init="retrieveData()">
         <template x-if="mm_data">
         <h1>Your new (generated) maturity model</h1>
         <div class="layers" x-if="mm_data" x-init="buildModel()" x-data="{ layers }">
