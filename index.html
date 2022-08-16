@@ -50,17 +50,6 @@
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
             }*/
             function buildModel(mm_data) {
-                /*let mm_data;
-                const url = 'https://maturity-model.online/mm_data.json';
-                fetch(url)
-                    .then((response) => response.json())
-                    .then(data => mm_data = data)
-                    .then(() => mm_data)
-                console.log('mm_data', mm_data)
-                console.log('data', data)*/
-                //onst mm_data = await fetchData();
-                console.log('mm_data', mm_data)
-
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
 
@@ -68,30 +57,23 @@
                         positiveHeds = mm_data.positiveHeds,
                         negativeHeds = mm_data.negativeHeds,
                         deks = mm_data.deks;
-                
-                console.log('colors', colors)
-                console.log('positiveHeds', positiveHeds)
-                console.log('negativeHeds', negativeHeds)
-                console.log('deks', deks)
 
                 // Get some random samples
                 const topHalf = getRandomSample(positiveHeds, Math.ceil(layerCount/2));
                 const bottomHalf = getRandomSample(negativeHeds, Math.ceil(layerCount/2));
                 const randomHeds = [...topHalf, ...bottomHalf]
                 const randomDeks = getRandomSample(deks, layerCount);
+                
                 // random colors needs to be sorted back into order
                 var randomColors = getRandomSample(colors, layerCount);
                 randomColors.sort((a, b) => (a.order > b.order) ? 1 : -1)
 
-                console.log("building layers: ", layerCount)
                 for (var i = 0; i < layerCount; i++) {
-                    //let bgcolor = lightenColor(randomColors[i].hex);
                     layers.push({
                         index: i+1,
                         hed: randomHeds[i],
                         dek: randomDeks[i],
                         color: randomColors[i]
-                        //bgcolor: bgcolor
                     })
                 }
                 console.log("layers ", layers)
@@ -102,13 +84,12 @@
     </head>
     <body>
     <div
-        x-cloak
         x-data="{raw_data: [], 'isLoading': true}"
         x-init="fetch('https://maturity-model.online/mm_data.json')
             .then(response => response.json())
             .then(response => { raw_data = response; isLoading = false; layers = buildModel(response); console.log(layers); })"
     >
-    <div x-show="!isLoading">
+    <div x-show="!isLoading" x-if="layers">
         <h1>Your new (generated) maturity model</h1>
         <div class="layers" x-data="{ layers }">
             <template x-for="layer in layers">
