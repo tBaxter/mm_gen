@@ -20,6 +20,19 @@
                     console.log(error);
                 }
             }*/
+            async function fetchData() {
+                const url = 'http://maturity-model.online/mm_data.json';
+                try {
+                    const response = await fetch(`url`, {
+                        method: 'GET',
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error(error);
+                }
+            }
             async function getData() {
                 let data;
                 const url = 'http://maturity-model.online/mm_data.json';
@@ -57,16 +70,17 @@
             }
 
             function buildModel() {
-                let mm_data;
+                /*let mm_data;
                 const url = 'https://maturity-model.online/mm_data.json';
                 fetch(url)
                     .then((response) => response.json())
                     .then(data => mm_data = data)
                     .then(() => mm_data)
                 console.log('mm_data', mm_data)
-                console.log('data', data)
+                console.log('data', data)*/
+                const mm_data = await fetchData();
+                console.log('data', mm_data)
 
-     
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
 
