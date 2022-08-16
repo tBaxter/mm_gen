@@ -52,7 +52,7 @@
                 }
                 return shuffled.slice(0, size);
             }
-            function lightenColor(hex) {
+            /*function lightenColor(hex) {
                 // Simple helper to convert hex color values to RGB 
                 // so we can mess with them, then return a new color
                 // Note: not currently used
@@ -65,7 +65,7 @@
                     newb =  Math.round( b + Math.min( 255-b, 50 ));
                 let rgbVal = "rgb(" + newr + "," + newg + "," + newb + ")";
                 return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
-            }
+            }*/
             async function buildModel() {
                 /*let mm_data;
                 const url = 'https://maturity-model.online/mm_data.json';
@@ -102,13 +102,13 @@
 
                 console.log("building layers: ", layerCount)
                 for (var i = 0; i < layerCount; i++) {
-                    let bgcolor = lightenColor(randomColors[i].hex);
+                    //let bgcolor = lightenColor(randomColors[i].hex);
                     layers.push({
                         index: i+1,
                         hed: randomHeds[i],
                         dek: randomDeks[i],
-                        color: randomColors[i],
-                        bgcolor: bgcolor
+                        color: randomColors[i]
+                        //bgcolor: bgcolor
                     })
                 }
                 console.log(layers)
