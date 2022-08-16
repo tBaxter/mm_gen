@@ -113,7 +113,7 @@
         x-data="{raw_data: [], 'isLoading': true}"
         x-init="fetch('https://maturity-model.online/mm_data.json')
             .then(response => response.json())
-            .then(response => { raw_data = response; isLoading = false; console.log(response.colors); })"
+            .then(response => { raw_data = response; isLoading = false; console.log(response); })"
     >
     <table x-show="!isLoading">
         <tr>
@@ -124,7 +124,7 @@
         </tr>
         <template x-for="team in raw_data">
             <tr>
-            <td x-text="team.color"></td>
+            <td x-text="team.color.name"></td>
             <td x-text="team.intFormedYear"></td>
             <td x-text="team.strStadium"></td>
             <td x-text="team.intStadiumCapacity"></td>
