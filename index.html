@@ -21,7 +21,7 @@
                 }
             }*/
             async function fetchData() {
-                const url = 'http://maturity-model.online/mm_data.json';
+                const url = 'https://maturity-model.online/mm_data.json';
                 try {
                     const response = await fetch(url, {
                         method: 'GET',
@@ -35,7 +35,7 @@
             }
             async function getData() {
                 let data;
-                const url = 'http://maturity-model.online/mm_data.json';
+                const url = 'https://maturity-model.online/mm_data.json';
                 const response = await fetch(url);
                 data = await response.json();
                 //let layers = buildModel(data);
