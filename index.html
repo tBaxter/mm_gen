@@ -85,7 +85,7 @@
     <body x-data="{raw_data: [], 'isLoading': true, layers: []}"
         x-init="fetch('https://maturity-model.online/mm_data.json')
             .then(response => response.json())
-            .then(response => { raw_data = response; isLoading = false; layers = buildModel(response); console.log(layers); })"
+            .then(response => { raw_data = response; layers = buildModel(response); isLoading = false;  })"
     >
         <template x-if="layers">
                 <h1>Your new (generated) maturity model</h1>
