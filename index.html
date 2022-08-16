@@ -82,9 +82,7 @@
         </script>
 
     </head>
-    <body>
-    <div
-        x-data="{raw_data: [], 'isLoading': true, layers: []}"
+    <body x-data="{raw_data: [], 'isLoading': true, layers: []}"
         x-init="fetch('https://maturity-model.online/mm_data.json')
             .then(response => response.json())
             .then(response => { raw_data = response; isLoading = false; layers = buildModel(response); console.log(layers); })"
@@ -102,6 +100,5 @@
                 </div>
             </div>
         </template>
-    </div>    
     </body>
 </html>
