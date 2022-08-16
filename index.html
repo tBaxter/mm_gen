@@ -69,21 +69,24 @@
         </script>
 
     </head>
-    <body x-data="{raw_data: [], layers: []}"
-        x-init="fetch('https://maturity-model.online/mm_data.json')
-            .then(response => response.json())
-            .then(response => { raw_data = response; layers = buildModel(response); console.log(layers); })"
-    >
-        <template x-if="layers">
-            <h1>Your new (generated) maturity model</h1>
-            <div class="layers">
-                <template x-for="layer in layers">
-                    <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
-                        <h2 x-text="layer.hed"></h2>
-                        <p x-text="layer.dek"></p>
-                    </div>
-                </template>
-            </div>
-        </template>
+    <body>
+        <div
+            x-data="{raw_data: [], layers: []}"
+            x-init="fetch('https://maturity-model.online/mm_data.json')
+                .then(response => response.json())
+                .then(response => { raw_data = response; layers = buildModel(response); console.log(layers); })"
+        >
+            <template x-if="layers">
+                <h1>Your new (generated) maturity model</h1>
+                <div class="layers">
+                    <template x-for="layer in layers">
+                        <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
+                            <h2 x-text="layer.hed"></h2>
+                            <p x-text="layer.dek"></p>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>    
     </body>
 </html>
