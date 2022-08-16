@@ -35,20 +35,7 @@
                 }
                 return shuffled.slice(0, size);
             }
-            /*function lightenColor(hex) {
-                // Simple helper to convert hex color values to RGB 
-                // so we can mess with them, then return a new color
-                // Note: not currently used
-                let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                let r = parseInt(result[1], 16),
-                    g = parseInt(result[2], 16),
-                    b = parseInt(result[3], 16)
-                    newr = Math.round( r + Math.min( 255-r, 50 )), // approximately 20% lighter
-                    newg =  Math.round( g + Math.min( 255-g, 50 )),
-                    newb =  Math.round( b + Math.min( 255-b, 50 ));
-                let rgbVal = "rgb(" + newr + "," + newg + "," + newb + ")";
-                return "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
-            }*/
+            
             function buildModel(mm_data) {
                 const layerCount = ~~(Math.random() * 5) + 2;
                 const layers = []
@@ -82,24 +69,21 @@
         </script>
 
     </head>
-    <body>
-    <div
-        x-data="{raw_data: [], layers: []}"
+    <body x-data="{raw_data: [], layers: []}"
         x-init="fetch('https://maturity-model.online/mm_data.json')
             .then(response => response.json())
             .then(response => { raw_data = response; layers = buildModel(response); console.log(layers); })"
     >
         <template x-if="layers">
-                <h1>Your new (generated) maturity model</h1>
-                <div class="layers">
-                    <template x-for="layer in layers">
-                        <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
-                            <h2 x-text="layer.hed"></h2>
-                            <p x-text="layer.dek"></p>
-                        </div>
-                    </template>
-                </div>
+            <h1>Your new (generated) maturity model</h1>
+            <div class="layers">
+                <template x-for="layer in layers">
+                    <div x-bind:style="`border-color: ${layer.color.name}; border-left: 100px solid ${layer.color.name}`">
+                        <h2 x-text="layer.hed"></h2>
+                        <p x-text="layer.dek"></p>
+                    </div>
+                </template>
+            </div>
         </template>
-    </div>    
     </body>
 </html>
