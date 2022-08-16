@@ -105,7 +105,7 @@
     <body x-data="{
         mm_data: null,
         async retrieveData() {
-            this.mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
+            mm_data = await (await fetch('https://maturity-model.online/mm_data.json')).json();
         }
     }" x-init="retrieveData()">
         <h2 x-text="mm_data.colors"></h2>
