@@ -23,7 +23,10 @@
             }
             
             function buildModel(mm_data) {
-                const layerCount = ~~(Math.random() * 5) + 2;
+                const availableLayers = [3,4,5]
+                //const layerCount = ~~(Math.random() * 4) + 3;
+                const rand = array[Math.floor(Math.random() * availableLayers.length)];
+                const layerCount = availableLayers[rand]
                 const layers = []
 
                 let colors = mm_data.colors,
